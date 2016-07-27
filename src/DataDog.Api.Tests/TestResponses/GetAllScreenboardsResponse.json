@@ -1,0 +1,28 @@
+﻿{
+  "screenboards": [
+    {
+      "read_only": true,
+      "resource": "/api/v1/screen/123456",
+      "created": "2016-07-21T09:54:09.948191+00:00",
+      "title": "Team 1 ReadOnly Dashboard",
+      "modified": "2016-07-26T12:23:41.136208+00:00",
+      "id": 123456
+    },
+    {
+      "read_only": false,
+      "resource": "/api/v1/screen/2468",
+      "created": "2016-06-01T14:29:58.381489+00:00",
+      "title": "Team 2 Dashboard",
+      "modified": "2016-07-26T07:18:27.450407+00:00",
+      "id": 2468
+    },
+    {
+      "read_only": false,
+      "resource": "/api/v1/screen/135",
+      "created": "2016-05-23T07:29:05.494904+00:00",
+      "title": "Team 3 Dashboard",
+      "modified": "2016-07-26T14:48:01.538521+00:00",
+      "id": 135
+    }
+  ]
+}
