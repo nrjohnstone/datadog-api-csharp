@@ -31,24 +31,24 @@ namespace DataDog.Api.Tests.Screenboards.Contracts
             var screenboard1 = x.Screenboards[0];
             screenboard1.Id.Should().Be(123456);
             screenboard1.Title.Should().Be("Team 1 ReadOnly Dashboard");
-            screenboard1.Created.Should().BeCloseTo(DateTime.Parse("2016-07-21 11:54:09.948"));
-            screenboard1.Modified.Should().BeCloseTo(DateTime.Parse("2016-07-26 14:23:41.136"));
+            screenboard1.Created.Should().BeCloseTo(DateTimeOffset.Parse("2016-07-21 09:54:09.948+00:00"));
+            screenboard1.Modified.Should().BeCloseTo(DateTimeOffset.Parse("2016-07-26 12:23:41.13+00:00"));
             screenboard1.ReadOnly.Should().BeTrue();
             screenboard1.Resource.Should().Be("/api/v1/screen/123456");
 
             var screenboard2 = x.Screenboards[1];
             screenboard2.Id.Should().Be(2468);
             screenboard2.Title.Should().Be("Team 2 Dashboard");
-            screenboard2.Created.Should().BeCloseTo(DateTime.Parse("2016-06-01 16:29:58.381"));
-            screenboard2.Modified.Should().BeCloseTo(DateTime.Parse("2016-07-26 09:18:27.450"));
+            screenboard2.Created.Should().BeCloseTo(DateTimeOffset.Parse("2016-06-01 14:29:58.381+00:00"));
+            screenboard2.Modified.Should().BeCloseTo(DateTimeOffset.Parse("2016-07-26 07:18:27.450+00:00"));
             screenboard2.ReadOnly.Should().BeFalse();
             screenboard2.Resource.Should().Be("/api/v1/screen/2468");
-
+            
             var screenboard3 = x.Screenboards[2];
             screenboard3.Id.Should().Be(135);
             screenboard3.Title.Should().Be("Team 3 Dashboard");
-            screenboard3.Created.Should().BeCloseTo(DateTime.Parse("2016-05-23 09:29:05.494"));
-            screenboard3.Modified.Should().BeCloseTo(DateTime.Parse("2016-07-26 16:48:01.538"));
+            screenboard3.Created.Should().BeCloseTo(DateTimeOffset.Parse("2016-05-23 07:29:05.494+00:00"));
+            screenboard3.Modified.Should().BeCloseTo(DateTimeOffset.Parse("2016-07-26 14:48:01.538+00:00"));
             screenboard3.ReadOnly.Should().BeFalse();
             screenboard3.Resource.Should().Be("/api/v1/screen/135");
         }
