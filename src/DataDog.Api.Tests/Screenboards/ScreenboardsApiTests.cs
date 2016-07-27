@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using DataDog.Api.Screenboards;
 using DataDog.Api.Screenboards.Contracts;
 using FluentAssertions;
@@ -9,7 +8,7 @@ using Ploeh.AutoFixture.AutoNSubstitute;
 using RestSharp;
 using Xunit;
 
-namespace DataDog.Api.Tests
+namespace DataDog.Api.Tests.Screenboards
 {
     public class ScreenboardsApiTests
     {
