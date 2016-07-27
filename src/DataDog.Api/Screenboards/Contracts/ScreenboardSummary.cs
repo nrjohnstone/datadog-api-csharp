@@ -7,8 +7,8 @@ namespace DataDog.Api.Screenboards.Contracts
         public int Id { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime Modified { get; set; }
+        public DateTimeOffset Created { get; set; }
+        public DateTimeOffset Modified { get; set; }
 
         public string Resource { get; set; }
         public bool ReadOnly { get; set; }
