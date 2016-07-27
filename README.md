@@ -1,2 +1,8 @@
 # datadog-api-csharp
-CSharp implementation of the datadog rest api
+
+CSharp wrapper for the DataDog REST API
+
+http://docs.datadoghq.com/api/
+
+
+
