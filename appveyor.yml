@@ -1,7 +1,7 @@
-version: 0.0.0.{build}
+version: 0.0.1.{build}
 
 environment:
-  packageVersion: 0.0.0
+  packageVersion: 0.0.1
 
 init:
 - ps: $env:buildVersion = "$env:packageVersion.$env:appveyor_build_number"
@@ -21,6 +21,7 @@ pull_requests:
 branches:
   only:
   - master
+  - release
 
 configuration: Release
 
