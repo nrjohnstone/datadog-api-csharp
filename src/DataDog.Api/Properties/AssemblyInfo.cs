@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DataDog.Api")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("CSharp library for DataDog REST API")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nathan Johnstone")]
 [assembly: AssemblyProduct("DataDog.Api")]
