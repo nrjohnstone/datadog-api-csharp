@@ -1,0 +1,36 @@
+﻿{
+  "board_title": "Board title for Team 1",
+  "read_only": true,
+  "board_bgtype": "board_graph",
+  "created": "2015-07-21T09:54:09.948191+00:00",
+  "original_title": "Original board title for Team 1",
+  "modified": "2015-07-26T12:23:41.136208+00:00",
+  "height": 80,
+  "width": "100%",
+  "template_variables": [ ],
+  "templated": true,
+  "widgets": [
+    {
+      "board_id": 1234,
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "SnaggleDorps created",
+      "height": 12,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:returns.hits.FoobarProcessor.MessageSent{host:wibblehost}.as_count()",
+            "aggregator": "avg",
+            "conditional_formats": [ ],
+            "type": "bars"
+          }
+        ]
+      }
+    }
+  ],
+  "shared": true,
+  "id": 1234,
+  "title_edited": true
+}
