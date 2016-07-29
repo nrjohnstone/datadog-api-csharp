@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DataDog.Api")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Coolblue")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DataDog.Api")]
-[assembly: AssemblyCopyright("Copyright © Coolblue 2016")]
+[assembly: AssemblyCopyright("Copyright © Nathan Johnstone 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
