@@ -32,7 +32,7 @@ cache:
 - packages -> **\packages.config
 
 before_build:
-- nuget restore
+- nuget restore ./src/DataDog.Api.sln
 
 build:
   project: ./src/DataDog.Api.sln
