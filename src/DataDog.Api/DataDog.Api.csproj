@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DatadogApiConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screenboards\Contracts\Screenboard.cs" />
     <Compile Include="Screenboards\Contracts\ScreenboardSummaries.cs" />
     <Compile Include="Screenboards\Contracts\ScreenboardSummary.cs" />
     <Compile Include="Screenboards\ScreenboardsApi.cs" />

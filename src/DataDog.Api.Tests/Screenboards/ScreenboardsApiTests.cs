@@ -66,12 +66,17 @@ namespace DataDog.Api.Tests.Screenboards
             sut.GetAllScreenboards();
 
             // assert
+            AssertRequest_Contains_DataDog_AuthenticationKeys(actualRestRequest);
+        }
+
+        private static void AssertRequest_Contains_DataDog_AuthenticationKeys(RestRequest actualRestRequest)
+        {
             actualRestRequest.Parameters.Should().Contain(x => x.Name.Equals("api_key"));
             actualRestRequest.Parameters.Should().Contain(x => x.Name.Equals("application_key"));
         }
 
         [Fact]
-        public void GetAllScreenboards_should_use_correct_apiKey_value()
+        public void GetAllScreenboards_datadog_authentication_keys_should_use_correct_values()
         {
             var sut = CreateSut();
 
@@ -82,9 +87,43 @@ namespace DataDog.Api.Tests.Screenboards
             sut.GetAllScreenboards();
 
             // assert
+            AssertDataDog_AuthenticationParameters_HaveCorrectValues(actualRestRequest);
+        }
+
+        private static void AssertDataDog_AuthenticationParameters_HaveCorrectValues(RestRequest actualRestRequest)
+        {
             actualRestRequest.Parameters.First(x => x.Name.Equals("api_key")).Value.Should().Be(FAKE_API_KEY);
             actualRestRequest.Parameters.First(x => x.Name.Equals("application_key")).Value.Should().Be(FAKE_APP_KEY);
         }
 
-    }
+        [Fact]
+        public void GetScreenboard_should_add_datadog_authentication_keys_to_request()
+        {
+            var sut = CreateSut();
+
+            RestRequest actualRestRequest = new RestRequest();
+            _mocks.Client.Execute<Screenboard>(Arg.Do<RestRequest>(x => actualRestRequest = x));
+
+            // act
+            sut.GetScreenboard(id: _fixture.Create<int>());
+
+            // assert
+            AssertRequest_Contains_DataDog_AuthenticationKeys(actualRestRequest);
+        }
+
+        [Fact]
+        public void GetScreenboard_datadog_authentication_keys_should_use_correct_values()
+        {
+            var sut = CreateSut();
+
+            RestRequest actualRestRequest = new RestRequest();
+            _mocks.Client.Execute<Screenboard>(Arg.Do<RestRequest>(x => actualRestRequest = x));
+
+            // act
+            sut.GetScreenboard(id: _fixture.Create<int>());
+
+            AssertDataDog_AuthenticationParameters_HaveCorrectValues(actualRestRequest);
+        }
+        
+    }   
 }
