@@ -26,5 +26,15 @@ namespace DataDog.Api.Screenboards
 
             return Client.Execute<ScreenboardSummaries>(request);
         }
+
+        public IRestResponse<Screenboard> GetScreenboard(int id)
+        {
+            var request = new RestRequest($"{SCREEN_ENDPOINT}/{id}", Method.GET);
+
+            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
+            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
+
+            return Client.Execute<Screenboard>(request);
+        }
     }
 }
