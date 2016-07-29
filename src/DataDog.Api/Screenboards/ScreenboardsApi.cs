@@ -21,18 +21,22 @@ namespace DataDog.Api.Screenboards
         {
             var request = new RestRequest(SCREEN_ENDPOINT, Method.GET);
 
-            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
-            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
+            AddAuthenticationParameters(request);
 
             return Client.Execute<ScreenboardSummaries>(request);
+        }
+
+        private void AddAuthenticationParameters(RestRequest request)
+        {
+            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
+            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
         }
 
         public IRestResponse<Screenboard> GetScreenboard(int id)
         {
             var request = new RestRequest($"{SCREEN_ENDPOINT}/{id}", Method.GET);
 
-            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
-            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
+            AddAuthenticationParameters(request);
 
             return Client.Execute<Screenboard>(request);
         }
@@ -41,8 +45,7 @@ namespace DataDog.Api.Screenboards
         {
             var request = new RestRequest($"{SCREEN_ENDPOINT}/{id}", Method.DELETE);
 
-            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
-            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
+            AddAuthenticationParameters(request);
 
             return Client.Execute(request);
         }
