@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DataDog-Api-CSharp</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/nrjohnstone/datadog-api-csharp/blob/master/LICENSE</licenseUrl> 
+    <projectUrl>https://github.com/nrjohnstone/datadog-api-csharp</projectUrl>     
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags></tags>
+  </metadata>
+  <files> 
+     <file src=".\DataDog.Api\bin\Release\DataDog.Api.dll" target="lib\net46" /> 
+  </files> 
+</package>
