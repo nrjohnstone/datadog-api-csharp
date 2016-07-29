@@ -1,4 +1,4 @@
-version: 1.0.{build}
+version: 0.0.{build}
 
 pull_requests:
   do_not_increment_build_number: true
@@ -7,14 +7,21 @@ branches:
   only:
   - master
 
+configuration: Release
+
 nuget:
+  account_feed: true
   disable_publish_on_pr: true
+
+cache:
+- packages -> **\packages.config
 
 before_build:
 - cmd: nuget.exe restore ./src/DataDog.Api.sln
 
 build:
   project: ./src/DataDog.Api.sln
+  publish_nuget: true
   verbosity: minimal
 
 deploy:
