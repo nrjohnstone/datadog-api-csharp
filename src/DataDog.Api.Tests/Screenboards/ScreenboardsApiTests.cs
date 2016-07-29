@@ -87,10 +87,10 @@ namespace DataDog.Api.Tests.Screenboards
             sut.GetAllScreenboards();
 
             // assert
-            AssertDataDog_AuthenticationParameters_HaveCorrectValues(actualRestRequest);
+            AssertDataDog_AuthenticationKeyParameters_HaveCorrectValues(actualRestRequest);
         }
 
-        private static void AssertDataDog_AuthenticationParameters_HaveCorrectValues(RestRequest actualRestRequest)
+        private static void AssertDataDog_AuthenticationKeyParameters_HaveCorrectValues(RestRequest actualRestRequest)
         {
             actualRestRequest.Parameters.First(x => x.Name.Equals("api_key")).Value.Should().Be(FAKE_API_KEY);
             actualRestRequest.Parameters.First(x => x.Name.Equals("application_key")).Value.Should().Be(FAKE_APP_KEY);
@@ -122,7 +122,7 @@ namespace DataDog.Api.Tests.Screenboards
             // act
             sut.GetScreenboard(id: _fixture.Create<int>());
 
-            AssertDataDog_AuthenticationParameters_HaveCorrectValues(actualRestRequest);
+            AssertDataDog_AuthenticationKeyParameters_HaveCorrectValues(actualRestRequest);
         }
         
         [Fact]
@@ -151,7 +151,52 @@ namespace DataDog.Api.Tests.Screenboards
             // act
             sut.DeleteScreenboard(id: _fixture.Create<int>());
 
-            AssertDataDog_AuthenticationParameters_HaveCorrectValues(actualRestRequest);
+            AssertDataDog_AuthenticationKeyParameters_HaveCorrectValues(actualRestRequest);
+        }
+
+        [Fact]
+        public void CreateScreenboard_should_add_datadog_authentication_keys_to_request()
+        {
+            var sut = CreateSut();
+
+            RestRequest actualRestRequest = new RestRequest();
+            _mocks.Client.Execute<Screenboard>(Arg.Do<RestRequest>(x => actualRestRequest = x));
+
+            // act
+            sut.CreateScreenboard(new { board_title = "Test"});
+
+            // assert
+            AssertRequest_Contains_DataDog_AuthenticationKeys(actualRestRequest);
+        }
+
+        [Fact]
+        public void CreateScreenboard_datadog_authentication_keys_should_use_correct_values()
+        {
+            var sut = CreateSut();
+
+            RestRequest actualRestRequest = new RestRequest();
+            _mocks.Client.Execute<Screenboard>(Arg.Do<RestRequest>(x => actualRestRequest = x));
+
+            // act
+            sut.CreateScreenboard(new { board_title = "Test" });
+
+            // assert
+            AssertDataDog_AuthenticationKeyParameters_HaveCorrectValues(actualRestRequest);
+        }
+
+        [Fact]
+        public void CreateScreenboard_datadog_authentication_keys_should_add_json_contentType_header()
+        {
+            var sut = CreateSut();
+
+            RestRequest actualRestRequest = new RestRequest();
+            _mocks.Client.Execute<Screenboard>(Arg.Do<RestRequest>(x => actualRestRequest = x));
+
+            // act
+            sut.CreateScreenboard(new { board_title = "Test" });
+
+            // assert
+            actualRestRequest.Parameters.First(x => x.Name.Equals("Content-Type")).Value.Should().Be("application/json");
         }
     }
 }

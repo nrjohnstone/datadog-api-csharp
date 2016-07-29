@@ -49,5 +49,18 @@ namespace DataDog.Api.Screenboards
 
             return Client.Execute(request);
         }
+
+        public IRestResponse<Screenboard> CreateScreenboard(object screenboardRequest)
+        {
+            var request = new RestRequest(SCREEN_ENDPOINT, Method.POST);
+
+            request.AddHeader("Content-Type", "application/json");
+            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
+            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
+
+            request.AddJsonBody(screenboardRequest);
+           
+            return Client.Execute<Screenboard>(request);
+        }
     }
 }
