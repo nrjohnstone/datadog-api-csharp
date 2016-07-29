@@ -36,5 +36,15 @@ namespace DataDog.Api.Screenboards
 
             return Client.Execute<Screenboard>(request);
         }
+
+        public IRestResponse DeleteScreenboard(int id)
+        {
+            var request = new RestRequest($"{SCREEN_ENDPOINT}/{id}", Method.DELETE);
+
+            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
+            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
+
+            return Client.Execute(request);
+        }
     }
 }

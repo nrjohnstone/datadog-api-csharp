@@ -125,5 +125,33 @@ namespace DataDog.Api.Tests.Screenboards
             AssertDataDog_AuthenticationParameters_HaveCorrectValues(actualRestRequest);
         }
         
-    }   
+        [Fact]
+        public void DeleteScreenboard_should_add_datadog_authentication_keys_to_request()
+        {
+            var sut = CreateSut();
+
+            RestRequest actualRestRequest = new RestRequest();
+            _mocks.Client.Execute(Arg.Do<RestRequest>(x => actualRestRequest = x));
+
+            // act
+            sut.DeleteScreenboard(id: _fixture.Create<int>());
+
+            // assert
+            AssertRequest_Contains_DataDog_AuthenticationKeys(actualRestRequest);
+        }
+
+        [Fact]
+        public void DeleteScreenboard_datadog_authentication_keys_should_use_correct_values()
+        {
+            var sut = CreateSut();
+
+            RestRequest actualRestRequest = new RestRequest();
+            _mocks.Client.Execute(Arg.Do<RestRequest>(x => actualRestRequest = x));
+
+            // act
+            sut.DeleteScreenboard(id: _fixture.Create<int>());
+
+            AssertDataDog_AuthenticationParameters_HaveCorrectValues(actualRestRequest);
+        }
+    }
 }
