@@ -55,11 +55,22 @@ namespace DataDog.Api.Screenboards
             var request = new RestRequest(SCREEN_ENDPOINT, Method.POST);
 
             request.AddHeader("Content-Type", "application/json");
-            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
-            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
-
+            AddAuthenticationParameters(request);
+            
             request.AddJsonBody(screenboardRequest);
            
+            return Client.Execute<Screenboard>(request);
+        }
+
+        public IRestResponse<Screenboard> CreateScreenboard(string jsonBody)
+        {
+            var request = new RestRequest(SCREEN_ENDPOINT, Method.POST);
+
+            request.AddHeader("Content-Type", "application/json");
+            AddAuthenticationParameters(request);
+
+            request.AddParameter("application/json", jsonBody, ParameterType.RequestBody);
+
             return Client.Execute<Screenboard>(request);
         }
     }
