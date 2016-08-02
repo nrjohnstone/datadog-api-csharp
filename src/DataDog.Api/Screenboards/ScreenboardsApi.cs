@@ -21,18 +21,55 @@ namespace DataDog.Api.Screenboards
         {
             var request = new RestRequest(SCREEN_ENDPOINT, Method.GET);
 
-            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
-            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
+            AddAuthenticationParameters(request);
 
             return Client.Execute<ScreenboardSummaries>(request);
+        }
+
+        private void AddAuthenticationParameters(RestRequest request)
+        {
+            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
+            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
         }
 
         public IRestResponse<Screenboard> GetScreenboard(int id)
         {
             var request = new RestRequest($"{SCREEN_ENDPOINT}/{id}", Method.GET);
 
-            request.AddQueryParameter("api_key", _datadogApiConfig.ApiKey);
-            request.AddQueryParameter("application_key", _datadogApiConfig.AppKey);
+            AddAuthenticationParameters(request);
+
+            return Client.Execute<Screenboard>(request);
+        }
+
+        public IRestResponse DeleteScreenboard(int id)
+        {
+            var request = new RestRequest($"{SCREEN_ENDPOINT}/{id}", Method.DELETE);
+
+            AddAuthenticationParameters(request);
+
+            return Client.Execute(request);
+        }
+
+        public IRestResponse<Screenboard> CreateScreenboard(object screenboardRequest)
+        {
+            var request = new RestRequest(SCREEN_ENDPOINT, Method.POST);
+
+            request.AddHeader("Content-Type", "application/json");
+            AddAuthenticationParameters(request);
+            
+            request.AddJsonBody(screenboardRequest);
+           
+            return Client.Execute<Screenboard>(request);
+        }
+
+        public IRestResponse<Screenboard> CreateScreenboard(string jsonBody)
+        {
+            var request = new RestRequest(SCREEN_ENDPOINT, Method.POST);
+
+            request.AddHeader("Content-Type", "application/json");
+            AddAuthenticationParameters(request);
+
+            request.AddParameter("application/json", jsonBody, ParameterType.RequestBody);
 
             return Client.Execute<Screenboard>(request);
         }
