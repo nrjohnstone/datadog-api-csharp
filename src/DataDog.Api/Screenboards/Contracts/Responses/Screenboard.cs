@@ -1,6 +1,6 @@
 using System;
 
-namespace DataDog.Api.Screenboards.Contracts
+namespace DataDog.Api.Screenboards.Contracts.Responses
 {
     public class Screenboard
     {
@@ -16,5 +16,6 @@ namespace DataDog.Api.Screenboards.Contracts
         public bool Shared { get; set; }
         public int Id { get; set; }
         public bool TitleEdited { get; set; }
+        public object Widgets { get; set; }
     }
 }

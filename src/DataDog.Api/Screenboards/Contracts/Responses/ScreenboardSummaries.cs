@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DataDog.Api.Screenboards.Contracts
+namespace DataDog.Api.Screenboards.Contracts.Responses
 {
     public class ScreenboardSummaries
     {

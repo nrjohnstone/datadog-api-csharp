@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
-using DataDog.Api.Screenboards.Contracts;
+using DataDog.Api.Screenboards.Contracts.Responses;
 using FluentAssertions;
 using RestSharp;
 using RestSharp.Deserializers;
 using Xunit;
 
-namespace DataDog.Api.Tests.Screenboards.Contracts
+namespace DataDog.Api.Tests.Screenboards.Contracts.Responses
 {
     public class ScreenboardTests
     {

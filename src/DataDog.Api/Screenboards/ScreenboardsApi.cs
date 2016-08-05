@@ -1,4 +1,5 @@
 ﻿using DataDog.Api.Screenboards.Contracts;
+using DataDog.Api.Screenboards.Contracts.Responses;
 using RestSharp;
 
 namespace DataDog.Api.Screenboards
@@ -53,6 +54,7 @@ namespace DataDog.Api.Screenboards
         public IRestResponse<Screenboard> CreateScreenboard(object screenboardRequest)
         {
             var request = new RestRequest(SCREEN_ENDPOINT, Method.POST);
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
 
             request.AddHeader("Content-Type", "application/json");
             AddAuthenticationParameters(request);

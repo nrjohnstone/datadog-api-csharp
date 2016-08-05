@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using DataDog.Api.Screenboards;
 using DataDog.Api.Screenboards.Contracts;
+using DataDog.Api.Screenboards.Contracts.Responses;
 using FluentAssertions;
 using NSubstitute;
 using NSubstitute.Exceptions;
